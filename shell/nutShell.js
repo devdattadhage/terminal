@@ -1,23 +1,26 @@
 const rootDirectory = 'nutshell ~ %';
 let currDirectory = rootDirectory;
 
-const directory = function() {
-  currentDirectory = 
+const directory = function (args) {
+  return 'nutshell ' + args + ' %';
 }
 
 const runCd = function (args) {
-  currDirectory = args.join();
-  return;
+  currDirectory = directory(args.join());
+}
+
+const runEcho = function (args) {
+  console.log(args.join(" "));
 }
 
 const runCommand = function (userCommand) {
   const [command, ...args] = userCommand.split(' ');
 
   switch (command) {
-    case 'echo': return args.join();
+    case 'echo': return runEcho(args);
     case 'cd': return runCd(args);
 
-    default: return 'zsh: command not found: ' + command;
+    default: console.log('zsh: command not found: ' + command);
   }
 }
 
@@ -25,9 +28,7 @@ const shell = function () {
   while (true) {
     const userCommand = prompt(currDirectory);
 
-    const commandOutput = runCommand(userCommand);
-
-    console.log(commandOutput);
+    runCommand(userCommand);
   }
 }
 
