@@ -1,3 +1,5 @@
+# Terminal Commands
+
 1. `say` "type anything that you want the terminal to say".
 2. `caffeinate` it will keep mac awake hit ctl C to stop.
 3. `ctl + shift + 3` to take screenshot it will store it by default in desktop. `ctl + shift + 4` even better way to take screenshot you can select specific part. `command + ctl + shift + 4` it will copy screenshot to clipboard.
