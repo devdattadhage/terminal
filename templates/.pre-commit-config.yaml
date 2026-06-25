@@ -1,0 +1,23 @@
+# This is a pre-commit configuration file that defines hooks to be run before committing code to a Git repository.
+# It includes hooks for checking YAML files, fixing end-of-file issues, removing trailing whitespace, and running code formatting and linting checks using Ruff.
+# The configuration also specifies that the generated gRPC files in the `src/toolkit/grpc/generated/` directory should be excluded from these checks.
+
+exclude: ^src/toolkit/grpc/generated/ # This line excludes the generated gRPC files from being checked by pre-commit hooks.
+
+repos:
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v6.0.0
+      hooks:
+        - id: check-yaml
+        - id: end-of-file-fixer
+        - id: trailing-whitespace
+    - repo: https://github.com/astral-sh/uv-pre-commit
+      rev: 0.9.26
+      hooks:
+        - id: uv-lock
+    - repo: https://github.com/astral-sh/ruff-pre-commit
+      rev: v0.14.14
+      hooks:
+        - id: ruff-check
+          args: [--fix]
+        - id: ruff-format
